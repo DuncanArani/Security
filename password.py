@@ -24,7 +24,7 @@ class Password:
         Password.password_list.remove(self)
         
 @classmethod
-def find_by_email(cls,security):
+def find_by_email(cls,email):
 
 
 
@@ -33,7 +33,7 @@ def find_by_email(cls,security):
                     return password
 
 @classmethod
-def password_exist(cls,security):
+def password_exist(cls,email):
         # checks if the password exists from the password list
         for password in cls.contact_list:
             if password.password==password:
@@ -48,8 +48,8 @@ def display_password(cls):
     return cls.password_list
 
 @classmethod
-def copy_email(cls,security):
-    password_found=Password.find_by_security(security)
+def copy_email(cls,email):
+    password_found=Password.find_by_email(email)
     pyperclip.copy(password_found.email)
 
 

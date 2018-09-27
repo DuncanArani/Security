@@ -15,17 +15,17 @@ def delete_password(password):
     # function that enables one to delete a password    
     password.delete_password()
 
-def find_password(security):
+def find_password(email):
 
 # the function that finds password by email and theen returns password
-    return Password.find_by__security(security)
+    return Password.find_by__email(email)
 
 
 
-def check_existing_passwords(security):
+def check_existing_passwords(email):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exist(security)
+    return Password.password_exist(email)
 
 def display_password():
 
