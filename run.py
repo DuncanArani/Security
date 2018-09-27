@@ -6,7 +6,7 @@ def create_password(first_name,last_name, email, password):
     new_password = Password(first_name, last_name, email, password)
     return new_password
 
-def save_passwords(password):
+def save_password(password):
 # We create a save_passwords function that takes in a password  object and then calls the save_password method to save the password.
     # funnction that saves the password
     password.save_password() 
@@ -71,7 +71,7 @@ while True:
 
         elif short_code == 'dp':
 
-                if display_passwords():
+                if display_password():
                     print("Here is a list of  your saved passwords")
                     print('\n')
                 
@@ -91,7 +91,7 @@ while True:
 
             search_email = input()
 
-            if check_existing_password(search_email):
+            if check_existing_passwords(search_email):
 
                 search_email = find_password(search_email)
                 print(f"{search_password.first_name} {search_password.last_name}")
