@@ -34,27 +34,30 @@ def find_by_email(cls,email):
                     return password
 
 @classmethod
-def password_exist(cls,email):
+def password_exists(cls,email):
         # checks if the password exists from the password list
-        for password in cls.contact_list:
+        for password in cls.password_list:
             if password.password==password:
                 return True
 
         return False
 
-@classmethod
-def display_password(cls):
 
-    # returns a password list
+@classmethod
+def display_passwords(cls):
+
+    # returns a password list from the password list
     return cls.password_list
 
 @classmethod
 def copy_email(cls,email):
-    password_found=Password.find_by_email(email)
+
+    # copy the email for the password found
+    password_found= Password.find_by_email(email)
     pyperclip.copy(password_found.email)
 
-def check_existing_password(email):
+def check_existing_passwords(email):
     # checks if the password exist with that email and return a booleon
-    return Password.password_exist(email)
+    return password.Password_exist(email)
 
 

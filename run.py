@@ -25,9 +25,9 @@ def find_password(email):
 def check_existing_passwords(email):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exist(email)
+    return password.password_exists(email)
 
-def display_password():
+def display_passwords():
 
     # function that all saved passwords and displays them
     return Password.display_passwords()
@@ -71,7 +71,7 @@ while True:
 
         elif short_code == 'dp':
 
-                if display_password():
+                if display_passwords():
                     print("Here is a list of  your saved passwords")
                     print('\n')
                 
