@@ -22,10 +22,10 @@ def find_password(email):
 
 
 
-def check_existing_passwords(email):
+def check_existing_password(email):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exists(email) # True or False
+    return Password.password_exist(email) # True or False
 
 def display_passwords():
 
@@ -106,7 +106,7 @@ while True:
                 
         elif short_code == "ex":
                 print("Thank you for working with us")
-                break
+                # break
 
         else:
                     print("Results not found. Please use the short codes")

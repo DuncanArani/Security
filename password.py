@@ -34,10 +34,10 @@ def find_by_password(cls,password):
                     return password
 
 @classmethod
-def password_exist(cls,password):
+def password_exist(cls,email):
         # checks if the password exists from the password list
         for password in cls.password_list:
-            if password.password == password:
+            if password.email == email:
                 return True
 
         return False
