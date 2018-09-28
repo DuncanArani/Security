@@ -25,7 +25,7 @@ class Password:
         Password.password_list.remove(self)
         
 @classmethod
-def find_by_email(cls,password):
+def find_by_password(cls,password):
 
 
 

@@ -3,16 +3,16 @@ import unittest #iporting unitest module
 from password import Password #importing password module
 
 class TestPassword(unittest.TestCase):
-    # thsi class defines test cases for password class behaviours
+    # thsi class defines test cases for password class behaviourspython3.6 contact_test.pypython3.6 contact_test.py
+
+
     # also helps ccreating test cases
 
     def setUP(self):
         # method that runs before each test
         self.new_password("Duncan", "Arani","duncanarani@gmail.com","31740141")
 
-    def tearDown(self):
-        # method that does the clean up after every test runs
-        Password.password_list=[]
+   
 
     def test_init(self):
         # to test if the object is initialized properly
@@ -63,14 +63,14 @@ class TestPassword(unittest.TestCase):
         password_exists=Password.password_exists("31740141")
         self.assertTrue(password_exists)
 
-    def test_display_all_passwords(self):
-        # this returns alist of all password saved
-        self.assertEqual(Password.display_password(),Password.password_list)
+        def test_display_all_passwords(self):
+            # this returns alist of all password saved
+            self.assertEqual(Password.display_password(),Password.password_list)
 
-    def test.copy_email(self)
+        def test.copy_email(self)
         # confirm that we are copying the email from the found password
         self.new_password.save_password()
-        Password.copy_email("31740141")
+        Password.copy_email("password")
 
         assertEqual(self.new_password.email,pyperclip.paste())
 
