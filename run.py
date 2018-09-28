@@ -9,7 +9,7 @@ def create_password(first_name,last_name, email, password):
 def save_password(password):
 # We create a save_passwords function that takes in a password  object and then calls the save_password method to save the password.
     # funnction that saves the password
-    password.save_password() 
+    password.save_password(password) 
 
 def delete_password(password):
     # function that enables one to delete a password    
@@ -49,6 +49,7 @@ while True:
         short_code = input().lower()
 
         if short_code == 'cp':# creating a new password
+            
                 print("New Password")
                 print("-"*10)
 
