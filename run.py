@@ -15,27 +15,27 @@ def delete_password(password):
     # function that enables one to delete a password    
     password.delete_password()
 
-def find_password(email):
+def find_password(password):
 
 # the function that finds password by email and theen returns password
-    return Password.find_by__email(email)
+    return Password.find_by__email(password)
 
 
 
-def check_existing_passwords(email):
+def check_existing_passwords(password):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return password.password_exists(email)
+    return Password.password_exists(password) # True or False
 
 def display_passwords():
 
-    # function that all saved passwords and displays them
-    return Password.display_passwords()
+    # function that displays all saved password
+    return Password.display_password()
 
 
 #  the above is the defination of functions
 
-# calling of the functions bellow
+# calling of the above functions bellow
 def main():
         print("Hello Welcome to your password list. What is your name?")
         user_name = input()
@@ -48,7 +48,7 @@ while True:
 
         short_code = input().lower()
 
-        if short_code == 'cp':
+        if short_code == 'cp':# creating a new password
                 print("New Password")
                 print("-"*10)
 
@@ -65,6 +65,7 @@ while True:
                 password = input()
 
                 save_password(create_password(first_name,last_name,email,password)) 
+
                 print ('\n')
                 print(f"New Password {first_name} {last_name} {email} created")
                 print ('\n')
@@ -97,14 +98,14 @@ while True:
                 print(f"{search_password.first_name} {search_password.last_name}")
                 print('-' * 20)
 
-                print(f"email{search_password.email}")
+                print(f"Email{search_password.email}")
                 print(f"password{search_password.password}")
             else:
-                        print("That password does not exist")
+                print("That password does not exist")
 
                 
         elif short_code == "ex":
-                print("thank you")
+                print("Thank you for working with us")
                 break
 
         else:

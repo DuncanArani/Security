@@ -25,7 +25,7 @@ class Password:
         Password.password_list.remove(self)
         
 @classmethod
-def find_by_email(cls,email):
+def find_by_email(cls,password):
 
 
 
@@ -34,10 +34,10 @@ def find_by_email(cls,email):
                     return password
 
 @classmethod
-def password_exists(cls,email):
+def password_exist(cls,password):
         # checks if the password exists from the password list
         for password in cls.password_list:
-            if password.password==password:
+            if password.password == password:
                 return True
 
         return False
@@ -58,6 +58,6 @@ def copy_email(cls,email):
 
 def check_existing_passwords(email):
     # checks if the password exist with that email and return a booleon
-    return password.Password_exist(email)
+    return Password.password_exists(email)
 
 
