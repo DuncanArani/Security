@@ -23,7 +23,7 @@ class TestPassword(unittest.TestCase):
         self.assertEqual(self.new_password.password,"31740141")
 
     def test_save_password(self):
-        # ttesting if the password object is saved into our password list
+        # testing if the password object is saved into our password list
         self.new_password.save_password() #saving new password
         self.assertEqual(len(Password.password_list), 1)
 
@@ -67,7 +67,7 @@ class TestPassword(unittest.TestCase):
         # this returns alist of all password saved
         self.assertEqual(Password.display_password(),Password.password_list)
 
-    def test.copy_email(self):
+    def test.copy_email(self)
         # confirm that we are copying the email from the found password
         self.new_password.save_password()
         Password.copy_email("31740141")
