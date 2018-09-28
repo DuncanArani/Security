@@ -10,6 +10,10 @@ class TestPassword(unittest.TestCase):
         # method that runs before each test
         self.new_password("Duncan", "Arani","duncanarani@gmail.com","31740141")
 
+    def tearDown(self):
+        # method that does the clean up after every test runs
+        Password.password_list=[]
+
     def test_init(self):
         # to test if the object is initialized properly
 
@@ -23,9 +27,7 @@ class TestPassword(unittest.TestCase):
         self.new_password.save_password() #saving new password
         self.assertEqual(len(Password.password_list), 1)
 
-    def tearDown(self):
-        # method that does the clean up after every test runs
-        Password.password_list=[]
+    
 
     def test_save_multiple_password(self):
         # checks if we can save multiple passwords to our list
