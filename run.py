@@ -9,23 +9,23 @@ def create_password(first_name,last_name, email, password):
 def save_password(password):
 # We create a save_passwords function that takes in a password  object and then calls the save_password method to save the password.
     # funnction that saves the password
-    password.save_password(password) 
+    password.save_password() 
 
 def delete_password(password):
     # function that enables one to delete a password    
     password.delete_password()
 
-def find_password(password):
+def find_password(email):
 
 # the function that finds password by email and theen returns password
-    return Password.find_by__email(password)
+    return Password.find_by__email(email)
 
 
 
-def check_existing_passwords(password):
+def check_existing_passwords(email):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exists(password) # True or False
+    return Password.password_exists(email) # True or False
 
 def display_passwords():
 
@@ -49,7 +49,6 @@ while True:
         short_code = input().lower()
 
         if short_code == 'cp':# creating a new password
-            
                 print("New Password")
                 print("-"*10)
 
