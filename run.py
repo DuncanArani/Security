@@ -92,7 +92,7 @@ while True:
 
             search_email = input()
 
-            if check_existing_passwords(search_email):
+            if check_existing_password(search_email):
 
                 search_password = find_password(search_email)
                 print(f"{search_password.first_name} {search_password.last_name}")
