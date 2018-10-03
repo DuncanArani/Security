@@ -63,11 +63,11 @@ class TestPassword(unittest.TestCase):
         password_exists=Password.password_exists("31740141")
         self.assertTrue(password_exists)
 
-        def test_display_all_passwords(self):
-            # this returns alist of all password saved
-            self.assertEqual(Password.display_password(),Password.password_list)
+    def test_display_all_passwords(self):
+        # this returns alist of all password saved
+        self.assertEqual(Password.display_password(),Password.password_list)
 
-        def test.copy_email(self)
+    def test.copy_email(self)
         # confirm that we are copying the email from the found password
         self.new_password.save_password()
         Password.copy_email("password")
