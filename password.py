@@ -1,5 +1,7 @@
 
 import pyperclip
+import string
+import random
 
 class Password:
     # this class generates instance of passwords
@@ -16,7 +18,19 @@ class Password:
     def save_password(self):
         # saves password into password list
         Password.password_list.append(self)
-        
+
+    def generate_password(self):
+        '''
+        method that generates the passwords for the user
+        '''
+        char = string.ascii_uppercase + string.ascii_lowercase + string.digits + "@#$%^&*"
+
+        gen_password = "".join(random.choice(char) for _ in range(8))
+
+        return gen_password
+
+
+
 
     def delete_password(self):
 
@@ -24,17 +38,17 @@ class Password:
 
         Password.password_list.remove(self)
         
+    @classmethod
+    def find_by_email(cls,email):
+
+
+
+                for password in cls.password_list:
+                    if password.password==password:
+                        return password
+
 @classmethod
-def find_by_password(cls,password):
-
-
-
-            for password in cls.password_list:
-                if password.password==password:
-                    return password
-
-@classmethod
-def password_exist(cls,email):
+def check_password_exist(cls,email):
         # checks if the password exists from the password list
         for password in cls.password_list:
             if password.email == email:

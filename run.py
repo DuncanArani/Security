@@ -25,12 +25,12 @@ def find_password(email):
 def check_existing_password(email):
 
 # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exist(email) # True or False
+    return Password.password_exists(email) # True or False
 
 def display_passwords():
 
     # function that displays all saved password
-    return Password.display_password()
+    return Password.display_passwords()
 
 
 #  the above is the defination of functions
