@@ -47,7 +47,7 @@ class Password:
                 
 
     @classmethod
-    def password_exist(cls,email):
+    def password_exists(cls,email):
             # checks if the password exists from the password list
             for password in cls.password_list:
                 if password.email == email:

@@ -29,7 +29,7 @@ def find_by_email(email):
 def check_existing_password(email):
 
     # function that checks if the password is existing with email amd returns a booleon
-    return Password.password_exists(email)  # True or False
+    return Password.check_existing_password(email)  # True or False
 
 
 def display_passwords():
@@ -128,7 +128,7 @@ while True:
 
             if check_existing_password(search_email):
 
-                search_password = find_password(search_email)
+                search_password = find_by_email(search_email)
                 print(f"{search_password.first_name} {search_password.last_name}")
                 print('-' * 20)
 
