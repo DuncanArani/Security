@@ -114,6 +114,7 @@ while True:
             for password in display_passwords():
                 print(f"{password.first_name} {password.last_name}{password.email}")
                 print('\n')
+                break
 
             else:
                 print('\n')
