@@ -20,10 +20,10 @@ def delete_password(password):
     password.delete_password()
 
 
-def find_by_email(email):
+def find_by_email(self):
 
     # the function that finds password by email and theen returns password
-    return Password.find_by__email(email)
+    return Password.find_by__email(self)
 
 
 def check_existing_password(email):
@@ -140,7 +140,7 @@ while True:
 
         elif short_code == "ex":
             print("Thank you for working with us")
-            # break
+            break
 
         else:
             print("Results not found. Please use the short codes")

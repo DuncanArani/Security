@@ -39,7 +39,7 @@ class Password:
         return Password.password_exists(self)
 
     @classmethod
-    def find_password(cls,name):
+    def find_by_email(cls,email):
 
 
 
