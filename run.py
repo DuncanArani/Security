@@ -20,7 +20,7 @@ def delete_password(password):
     password.delete_password()
 
 
-def find_by_email(email):
+def find_password(email):
 
     # the function that finds password by email and theen returns password
     return Password.find_by__email(email)

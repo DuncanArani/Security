@@ -4,8 +4,10 @@ import string
 import random
 
 class Password:
+
     # this class generates instance of passwords
-    password_list=[] #empty list
+
+    password_list=[]
 
     def __init__(self, first_name , last_name,email, password):
         #removed docstring for simplicity
@@ -33,12 +35,12 @@ class Password:
 
 
     @classmethod
-    def find_by_email(cls,email):
+    def find_password(cls,name):
 
 
 
             for password in cls.password_list:
-                if password.password==password:
+                if password.email==password:
                     return password
 
     def check_existing_password(self):
@@ -50,7 +52,7 @@ class Password:
     def password_exists(cls,email):
             # checks if the password exists from the password list
             for password in cls.password_list:
-                if password.email == email:
+                if password.email == password:
                     return True
 
             return False
@@ -63,11 +65,11 @@ class Password:
         return cls.password_list
 
     @classmethod
-    def copy_email(cls,email):
+    def copy_email(cls,password):
 
         # copy the email for the password found
-        password_found= Password.find_by_email(email)
-        pyperclip.copy(password_found.email)
+        password_found= Password.find_password(password)
+        pyperclip.copy(password_found.password)
 
     
 
