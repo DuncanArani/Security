@@ -12,6 +12,8 @@ class TestPassword(unittest.TestCase):
         # method that runs before each test
         self.new_password("Duncan", "Arani",
                           "duncanarani@gmail.com", "31740141")
+    
+
 
     def test_init(self):
         # to test if the object is initialized properly
@@ -25,6 +27,10 @@ class TestPassword(unittest.TestCase):
         # testing if the password object is saved into our password list
         self.new_password.save_password()  # saving new password
         self.assertEqual(len(Password.password_list), 1)
+
+    def tearDown(self):
+        # tearDown method that does clean up after each test case has run.
+        Password.password_list = []
 
     def test_save_multiple_password(self):
         # checks if we can save multiple passwords to our list
@@ -43,7 +49,7 @@ class TestPassword(unittest.TestCase):
         self.new_password.delete_password()  # deleting password
         self.assertEqual(len(Password.password_list), 1)
 
-    def test_find_by_email(self):
+    def test_find_by_email(self,password):
 
         # checking if the password is in the list and the display the info
         self.new_password.save_password()
@@ -64,9 +70,9 @@ class TestPassword(unittest.TestCase):
         password_exists = Password.password_exists("31740141")
         self.assertTrue(password_exists)
 
-    def test_display_all_passwords(self):
+    def test_display_all_password(self):
         # this returns alist of all password saved
-        self.assertEqual(Password.display_password(),       Password.password_list)
+        self.assertEqual(Password.display_all_password(),       Password.password_list)
 
     def test_copy_email(self):
         # confirm that we are copying the email from the found password

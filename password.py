@@ -33,9 +33,14 @@ class Password:
         # saves password into password list
         Password.password_list.append(self)
 
+#  Decorators allow you to make simple modifications to callable objects like functions, methods, or classes.
+
+    def check_existing_password(self):
+        # checks if the password exist with that email and return a booleon
+        return Password.password_exists(self)
 
     @classmethod
-    def find_password(cls,name):
+    def find_by_email(cls,name):
 
 
 
@@ -43,10 +48,9 @@ class Password:
                 if password.email==password:
                     return password
 
-    def check_existing_password(self):
-        # checks if the password exist with that email and return a booleon
-        return Password.password_exists(self)
+    
                 
+#   loops through all the saved password and checks if any matches the emails
 
     @classmethod
     def password_exists(cls,email):
@@ -59,16 +63,16 @@ class Password:
 
 
     @classmethod
-    def display_passwords(cls):
+    def display_all_password(cls,password):
 
         # returns a password list from the password list
         return cls.password_list
 
     @classmethod
-    def copy_email(cls,password):
+    def copy_email(cls,email):
 
         # copy the email for the password found
-        password_found= Password.find_password(password)
+        password_found= Password.find_by_email(email)
         pyperclip.copy(password_found.password)
 
     

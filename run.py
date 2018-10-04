@@ -23,7 +23,7 @@ def delete_password(password):
 def find_password(email):
 
     # the function that finds password by email and theen returns password
-    return Password.find_by__email(email)
+    return Password.find_password(email)
 
 
 def check_existing_password(email):
@@ -112,7 +112,7 @@ while True:
             print('\n')
 
             for password in display_passwords():
-                print(f"{password.first_name} {password.last_name}{password.email}")
+                print(f"{password.email}")
                 print('\n')
 
             else:
@@ -128,7 +128,7 @@ while True:
 
             if check_existing_password(search_email):
 
-                search_password = find_by_email(search_email)
+                search_password = find_password(search_email)
                 print(f"{search_password.first_name} {search_password.last_name}")
                 print('-' * 20)
 
