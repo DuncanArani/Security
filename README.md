@@ -1,5 +1,5 @@
 # PASSWORD-LOCKER
-#### passwordlocker is updated version, 24/08/2018
+#### passwordlocker is updated version
 #### By Duncan Arani
 ## Description
 

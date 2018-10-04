@@ -20,10 +20,10 @@ def delete_password(password):
     password.delete_password()
 
 
-def find_password(email):
+def find_by_email(email):
 
     # the function that finds password by email and theen returns password
-    return Password.find_password(email)
+    return Password.find_by__email(email)
 
 
 def check_existing_password(email):
@@ -86,25 +86,24 @@ while True:
         print(f"New Password {first_name} {last_name} {email} created")
         print('\n')
         while True:
-            password_option = input(
-                "You can choose between: EP - To input existing password GP - To generate your new password \n").lower()
-            print('\n')
-            print('*'*80)
-
-            if password_option == "ep":
-                password = input("Enter your password: ")
-                break
-            elif password_option == "gp":
-                password = generate_passwords(password)
-                break
-            else:
-                print("Invalid Entry!")
-                break
-            save_password(create_password(
-                first_name, last_name, email, password))
+                            password_option = input("You can choose between: EP - To input existing password GP - To generate your new password \n").lower()
+                            print('\n')
+                            print('*'*80)
+                    
+                            if password_option == "ep":
+                                    password = input("Enter your password: ")
+                                    break
+                            elif password_option == "gp":
+                                    password = generate_passwords(password)
+                                    break
+                            else:
+                                    print("Invalid Entry!")
+                                    break
+                            save_password(create_password(first_name, last_name, email, password))
         print('+'*40)
         print(f"New Password {first_name} {last_name} {email} created")
         print('#' * 40)
+
 
     elif short_code == 'dp':
 
@@ -113,14 +112,13 @@ while True:
             print('\n')
 
             for password in display_passwords():
-                print(f"{password.email}")
+                print(f"{password.first_name} {password.last_name}{password.email}")
                 print('\n')
 
             else:
                 print('\n')
                 print("You  have no passwords saved yet")
                 print('\n')
-                break
 
         elif short_code == 'fp':
 
@@ -130,22 +128,22 @@ while True:
 
             if check_existing_password(search_email):
 
-                search_password = find_password(search_email)
-                print(f"{search_password.email}")
+                search_password = find_by_email(search_email)
+                print(f"{search_password.first_name} {search_password.last_name}")
                 print('-' * 20)
 
                 print(f"Email{search_password.email}")
                 print(f"password{search_password.password}")
             else:
                 print("That password does not exist")
-                break
 
         elif short_code == "ex":
             print("Thank you for working with us")
-            break
+            # break
 
         else:
             print("Results not found. Please use the short codes")
+
 
     if __name__ == '__main__':
 
