@@ -1,151 +1,266 @@
+
 #!/usr/bin/env python3.6
-from password import Password
+import string
+import random
+import datetime
+from locker import Locker
+from user import User
 
-# creating new password
+
+def passwor_generator(size=8, chars=string.ascii_lowercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
 
 
-def create_password(first_name, last_name, email, password):
-    new_password = Password(first_name, last_name, email, password)
-    return new_password
+def new_password(account, username, thepass):
+    new_pass = Locker(account, username, thepass)
+    return new_pass
 
 
 def save_password(password):
-    # We create a save_passwords function that takes in a password  object and then calls the save_password method to save the password.
-    # funnction that saves the password
     password.save_password()
 
 
-def delete_password(password):
-    # function that enables one to delete a password
+def del_password(password):
     password.delete_password()
 
 
-def find_by_email(self):
-
-    # the function that finds password by email and theen returns password
-    return Password.find_by__email(self)
+def display_password(username):
+    return Locker.find_by_username(username)
 
 
-def check_existing_password(email):
-
-    # function that checks if the password is existing with email amd returns a booleon
-    return Password.check_existing_password(email)  # True or False
+def search_if_exists(username):
+    return Locker.password_exists(username)
 
 
-def display_passwords():
+def display_all():
+    return Locker.display_password()
 
-    # function that displays all saved password
-    return Password.display_passwords()
-
-
-def generate_passwords(self):
-    '''
-    method to generate passwords
-    '''
-
-    password_gen = Password.generate_password(self)
-
-    return password_gen
+    # ********** USER RELATED FUNCTIONS *********
 
 
-#  the above is the defination of functions
+def check_exists(username):
+    return User.user_exists(username)
 
-# calling of the above functions bellow
+
+def new_user(name, username, email, thepass):
+    new_user = User(name, username, email, thepass)
+    return new_user
+
+
+def save_new_user(user):
+    user.save_user()
+
+
+def auth(username, password):
+    return User.pass_check(username, password)
+
+
+def it_checks(a, b):
+    if a == b:
+        return True
+
+
+time = datetime.datetime.now()
+
+
 def main():
-    print("Hello Welcome to your password list. What is your name?")
-    user_name = input()
+    print("-"*40)
 
-    print(f"Hello {user_name}. what would you like to access?")
-    print('\n')
+    print("Welcome to pSecure App ! Sign up to continue")
 
+    print("-"*70)
 
-while True:
-    print("Use these short codes : cp - create a new password, dp - display passwords, fp -find a password, ex -exit the password list ")
+    while True:
+        print("""
+            Select an option :
+            [1] . Login
+            [2] . Sign up
+            [3] . Exit App
+        """)
 
-    short_code = input().lower()
+        select = input()
 
-    if short_code == 'cp':  # creating a new password
-        print("New Password")
-        print("-"*10)
+        if select == "1":
+            print("Enter a username :")
+            username = input()
 
-        print("First name ")
-        first_name = input()
+            print("\nEnter your password")
 
-        print("Last name")
-        last_name = input()
+            password = input()
 
-        print("email")
-        email = input()
+            if check_exists(username):
+                if auth(username, password):
+                    while True:
+                        print("-"*70)
+                        print(f"pSecure  | Logged in as {username} | %time.!")
+                        print("-"*70)
+                        print("""
+                            Kindly select an option to proceed :\n
+                            [1] . Create a locker \n
+                            [2] . Search  \n
+                            [3] . Display your locked passwords \n
+                            [4] . Delete a password \n 
+                            [5] . Logout\n
+                            """)
 
-        print("password")
-        password = input()
+                        choice = input()
 
-        save_password(create_password(first_name, last_name, email, password))
+                        if choice == "1":
+                            print("Store a new Password :")
+                            print("-"*70)
 
-        print('\n')
-        print(f"New Password {first_name} {last_name} {email} created")
-        print('\n')
-        while True:
-                            password_option = input("You can choose between: EP - To input existing password GP - To generate your new password \n").lower()
-                            print('\n')
-                            print('*'*80)
-                    
-                            if password_option == "ep":
-                                    password = input("Enter your password: ")
-                                    break
-                            elif password_option == "gp":
-                                    password = generate_passwords(password)
-                                    break
+                            print("Enter Account e.g Facebook \n")
+                            acc = input()
+                            print("-"*70)
+
+                            print("Enter username e.g aruncodunco\n")
+                            username = input()
+                            print("-"*40)
+
+                            print("""You are doing Fantastic !\nNow , would you like us to generate a password for you ?\n
+                                    Y or N ?
+                                """)
+
+                            yono = input()
+
+                            if yono.lower() == "y":
+                                password = passwor_generator()
+                            elif yono.lower() == "n":
+                                print("Enter your password :")
+                                password = input()
                             else:
-                                    print("Invalid Entry!")
-                                    break
-                            save_password(create_password(first_name, last_name, email, password))
-        print('+'*40)
-        print(f"New Password {first_name} {last_name} {email} created")
-        print('#' * 40)
+                                print("\nInput unrecognized !")
+                                break
 
+                            save_password(new_password(
+                                acc, username, password))
 
-    elif short_code == 'dp':
+                            print("-"*70)
+                            print(f"""New Password locked !\n 
+                                Account : {acc}\n
+                                Username: {username}\n
+                                Password: {password}""")
+                            print("-"*70)
 
-        if display_passwords():
-            print("Here is a list of  your saved passwords")
-            print('\n')
+                            # search password
+                        elif choice == "2":
+                            search = input("\nEnter username :\n")
 
-            for password in display_passwords():
-                print(f"{password.first_name} {password.last_name}{password.email}")
-                print('\n')
-                break
+                            if search_if_exists(search):
+                                searched = display_password(search)
+                                print("-"*70)
+                                print("ACCOUNT  |  USERNAME  |  PASSWORD")
+                                print("-"*70)
+                                print(
+                                    f"{searched.acc_name} | {searched.username} | {searched.password}")
+                                print("-"*70)
+                            else:
+                                print("Password not found !")
+
+                            # display all passwords
+                        elif choice == "3":
+                            print("Here are your passwords :")
+                            print("-"*70)
+                            print("ACCOUNT  |  USERNAME  |  PASSWORD")
+
+                            if display_all():
+                                for locked in display_all():
+                                    print("-"*70)
+                                    print(
+                                        f"{locked.acc_name} | {locked.username} | {locked.password}")
+                            else:
+                                print("-"*70)
+                                print(
+                                    "Ooops ! It's lonely here . You haven't locked any password(s)")
+                                print("-"*70)
+
+                            # delete specific password
+                        elif choice == "4":
+                            print("Kindly provide username")
+                            which = input()
+                            found = display_password(which)
+
+                            if search_if_exists(which):
+                                print("Confirm . Y or N")
+                                confirm = input()
+                                if confirm.lower() == "y":
+                                    del_password(found)
+                                    print("-"*70)
+                                    print("Successfully deleted !")
+                                    print("-"*70)
+                                elif confirm.lower() == "n":
+                                    print("-"*70)
+                                    print("Permission Denied !")
+                                    print("-"*70)
+                                else:
+                                    print("Sorry I didn't get that !")
+                            else:
+                                print("-"*70)
+                                print(
+                                    "\nRecord not found ! Add Passwords to your locker .\n")
+                                print("-"*70)
+
+                            # exit the application
+                        elif choice == "5":
+                            print("-"*70)
+                            print("Logged Out !")
+                            print("-"*70)
+                            break
+
+                        else:
+                            print(
+                                "I'm sorry I didn't get that . Kindly use the provided option . ")
+                else:
+                    print("-"*70)
+                    print("Sorry ! Couldn't match your credentials !")
 
             else:
-                print('\n')
-                print("You  have no passwords saved yet")
-                print('\n')
+                print("-"*70)
+                print("\nKindly Sign Up to use pSecure !")
 
-        elif short_code == 'fp':
+        elif select == "2":
+            # print("Enter First Name and Last Name :")
+            print("-"*70)
+            f_and_last = input("Enter your First Name and Last Name :")
 
-            print("Enter the email you want to search password for")
+            # print("Choose a username :")
+            print("-"*70)
+            u_name = input("Choose a username : ")
 
-            search_email = input()
+            # print("Enter email :")
+            print("-"*70)
+            email = input("Enter email :")
 
-            if check_existing_password(search_email):
+            print("-"*70)
+            initial = input("Enter password :")
+            # initial = input()
+            # print("Repeat password :")
+            print("-"*70)
+            repeated = input("Repeat password :")
 
-                search_password = find_by_email(search_email)
-                print(f"{search_password.first_name} {search_password.last_name}")
-                print('-' * 20)
+            if it_checks(initial, repeated):
+                save_new_user(new_user(f_and_last, u_name, email, initial))
 
-                print(f"Email{search_password.email}")
-                print(f"password{search_password.password}")
+                print("-"*70)
+                print(
+                    f"Welcome aboard {u_name} ! Login to secure some password !")
+                print("-"*70)
             else:
-                print("That password does not exist")
+                print("-"*70)
+                print("""Ooops ! password didn't check !""")
+                print("-"*70)
 
-        elif short_code == "ex":
-            print("Thank you for working with us")
+        elif select == "3":
+            print("-"*70)
+            print("Thanks for using pSecure . Bye ! .....")
+            print("-"*70)
             break
 
         else:
-            print("Results not found. Please use the short codes")
+            print("-"*70)
+            print("Am sorry I didn't get that !")
 
 
-    if __name__ == '__main__':
+if __name__ == '__main__':
 
-        main()
+    main()
